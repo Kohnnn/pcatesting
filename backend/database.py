@@ -11,9 +11,10 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from src.database import Base
 
-# Database configuration
-DATABASE_PATH = os.getenv("DATABASE_PATH", "sentimentalpha.db")
-DATABASE_URL = f"sqlite:///./{DATABASE_PATH}"
+# Database configuration - use absolute path to project root
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATABASE_PATH = os.getenv("DATABASE_PATH", os.path.join(PROJECT_ROOT, "sentimentalpha.db"))
+DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
 
 # Create engine
 engine = create_engine(

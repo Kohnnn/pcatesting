@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { 
-  TradingSignal, 
-  DailySentiment, 
-  EventStudyData, 
+import {
+  TradingSignal,
+  DailySentiment,
+  EventStudyData,
   SignalThresholds,
   TableInfo,
   PaginatedResponse,
@@ -14,12 +14,23 @@ import {
   AnalystRecommendation,
 } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// Backend URLs
+const ZROK_BACKEND_URL = 'https://backendforpca.share.zrok.io';
+const LOCAL_BACKEND_URL = 'http://localhost:8000';
 
+// For zrok deployment, always use the zrok backend URL
+// Change this to LOCAL_BACKEND_URL for local development
+const API_BASE_URL = ZROK_BACKEND_URL;
+
+// Export the base URL for components that need it directly
+export const getBaseUrl = () => API_BASE_URL;
+
+// Create axios instance with zrok backend URL
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    'skip_zrok_interstitial': 'true',  // Bypass zrok interstitial page for API calls
   },
 });
 

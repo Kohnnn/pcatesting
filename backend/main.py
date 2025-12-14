@@ -19,19 +19,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS for frontend
+# Configure CORS for frontend - allow all origins for zrok deployment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",  # Next.js default dev server
-        "http://localhost:3001",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:3001",
-        "https://pcatesting.share.zrok.io",  # Zrok frontend URL
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins for zrok
+    allow_credentials=False,  # Must be False when using allow_origins=["*"]
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Include routers

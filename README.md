@@ -7,6 +7,10 @@
 
 Transform Vietnamese stock market analyst recommendations into actionable trading signals using academic research and sentiment analysis.
 
+## 🚀 Repository
+
+**GitHub**: [https://github.com/Kohnnn/pcatesting.git](https://github.com/Kohnnn/pcatesting.git)
+
 ## Overview
 
 SentimentAlpha Vietnam is a full-stack financial analytics platform implementing the "Downgrade Puzzle" research for the Vietnamese stock market. The system processes market data, constructs sentiment indices using PCA, performs event study analysis (CAR/CAS), and generates trading signals based on documented market anomalies.

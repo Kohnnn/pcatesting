@@ -1,0 +1,103 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Data files (keep structure, ignore content)
+data/*.parquet
+data/*.csv
+!data/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Next.js (frontend)
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/.env*.local
+frontend/tsconfig.tsbuildinfo
+
+# Backups
+backups/
+
+# Kiro specs (development only)
+.kiro/specs/
+
+# Test files
+test_app.html
+
+# Large data files
+xlsx/
+sentimentalpha.db
+
+# Documentation files (keep main README)
+*_SUMMARY.md
+*_GUIDE.md
+*_REPORT.md
+*_ANALYSIS.md
+*_CHECKLIST.md
+CRITICAL_FIXES_REQUIRED.md
+FIXES_APPLIED.md
+THEME_FIX_COMPLETE.md
+START_APP.md
+START_HERE.md
+QUICK_REFERENCE.md

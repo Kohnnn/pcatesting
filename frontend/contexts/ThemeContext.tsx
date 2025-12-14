@@ -42,8 +42,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (!mounted || typeof window === 'undefined') return;
     
     const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
+    
+    // Force remove both classes first
+    if (theme === 'dark') {
+      root.classList.remove('light');
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    }
     
     try {
       localStorage.setItem('theme', theme);

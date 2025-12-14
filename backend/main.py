@@ -26,7 +26,8 @@ app.add_middleware(
         "http://localhost:3000",  # Next.js default dev server
         "http://localhost:3001",
         "http://127.0.0.1:3000",
-        "http://127.0.0.1:3001"
+        "http://127.0.0.1:3001",
+        "https://pcatesting.share.zrok.io",  # Zrok frontend URL
     ],
     allow_credentials=True,
     allow_methods=["*"],

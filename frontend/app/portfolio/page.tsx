@@ -52,22 +52,22 @@ export default function PortfolioPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Portfolio Watchlist</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Portfolio Watchlist</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">
           Track your favorite stocks and their latest signals
         </p>
       </div>
 
       {/* Add to watchlist form */}
-      <div className="rounded-lg bg-white p-6 shadow">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Add Stock to Watchlist</h2>
+      <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow">
+        <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Add Stock to Watchlist</h2>
         <form onSubmit={handleAddTicker} className="flex gap-2">
           <input
             type="text"
             value={newTicker}
             onChange={(e) => setNewTicker(e.target.value)}
             placeholder="Enter ticker symbol (e.g., VNM, AAA)"
-            className="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 focus:border-blue-500 focus:outline-none"
             disabled={addingTicker}
           />
           <button
@@ -82,14 +82,14 @@ export default function PortfolioPage() {
 
       {/* Watchlist items */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
           Your Watchlist ({watchlist.length})
         </h2>
 
         {loading ? (
           <LoadingSkeleton />
         ) : watchlist.length === 0 ? (
-          <div className="rounded-lg bg-white p-8 text-center text-gray-500 shadow">
+          <div className="rounded-lg bg-white dark:bg-gray-800 p-8 text-center text-gray-500 dark:text-gray-400 shadow">
             Your watchlist is empty. Add stocks to start tracking them.
           </div>
         ) : (
@@ -97,12 +97,12 @@ export default function PortfolioPage() {
             {watchlist.map((item) => {
               const signal = watchlistSignals[item.ticker];
               return (
-                <div key={item.id} className="rounded-lg bg-white p-4 shadow">
+                <div key={item.id} className="rounded-lg bg-white dark:bg-gray-800 p-4 shadow">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold text-gray-900">{item.ticker}</h3>
-                        <span className="text-xs text-gray-500">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.ticker}</h3>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">
                           Added {new Date(item.added_at).toLocaleDateString()}
                         </span>
                       </div>
@@ -112,7 +112,7 @@ export default function PortfolioPage() {
                           <SignalCard signal={signal} />
                         </div>
                       ) : (
-                        <p className="mt-2 text-sm text-gray-500">No recent signals</p>
+                        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">No recent signals</p>
                       )}
                     </div>
                     

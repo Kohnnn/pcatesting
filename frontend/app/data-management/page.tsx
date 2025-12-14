@@ -17,6 +17,7 @@ export default function DataManagementPage() {
   const [activeTable, setActiveTable] = useState<string>('instruments');
   const [tableData, setTableData] = useState<PaginatedResponse<Record<string, unknown>> | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(50);
   const [sortBy, setSortBy] = useState<string | undefined>(undefined);
@@ -37,8 +38,10 @@ export default function DataManagementPage() {
     try {
       const data = await api.dataManagement.getTables();
       setTables(data);
+      setError(null);
     } catch (error) {
       console.error('Failed to fetch tables:', error);
+      setError('Unable to connect to backend API');
     }
   }, []);
 
@@ -53,8 +56,10 @@ export default function DataManagementPage() {
         ...filters,
       });
       setTableData(data);
+      setError(null);
     } catch (error) {
       console.error('Failed to fetch table data:', error);
+      setError('Unable to connect to backend API');
     } finally {
       setLoading(false);
     }
@@ -145,11 +150,28 @@ export default function DataManagementPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Data Management</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Data Management</h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">
           Browse and manage database contents
         </p>
       </div>
+
+      {error && (
+        <div className="rounded-lg bg-red-50 dark:bg-red-900/30 p-4 border border-red-200 dark:border-red-800">
+          <p className="text-red-800 dark:text-red-300 text-sm font-medium">
+            ⚠️ Unable to connect to backend API
+          </p>
+          <p className="text-red-600 dark:text-red-400 text-xs mt-2">
+            Please ensure the backend server is running:
+          </p>
+          <code className="block bg-red-100 dark:bg-red-900 px-3 py-2 rounded mt-2 text-xs">
+            cd backend && python main.py
+          </code>
+          <p className="text-red-600 dark:text-red-400 text-xs mt-2">
+            Or use the start script: <code className="bg-red-100 dark:bg-red-900 px-1 rounded">start_servers.bat</code>
+          </p>
+        </div>
+      )}
 
       {/* Pipeline UI Section */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
